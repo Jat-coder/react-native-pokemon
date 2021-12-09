@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import {Feather} from '@expo/vector-icons';
 import { borderColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
-const SearchBar = ({term,onTermChange}) =>{
+const SearchBar = ({term,onTermChange,onTermSubmit}) =>{
     return(
         <View style={styles.background}>
             <Feather name="search" style={styles.iconStyle}/>
@@ -12,6 +12,7 @@ const SearchBar = ({term,onTermChange}) =>{
             style={styles.textPadding} 
             placeholder="Search Bar" 
             onChangeText={newTerm => onTermChange(newTerm)}
+            onEndEditing={onTermSubmit}
             value={term}></TextInput>
         </View>
     )
@@ -24,7 +25,6 @@ const styles = StyleSheet.create({
         alignSelf:'center'
     },
     textPadding:{
-        paddingLeft:35,
         flex:1,
     },
     background:{
